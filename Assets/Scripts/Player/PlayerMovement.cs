@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpHeight = 2f;
     private float gravity = -9.81f;
 
-    private Vector3 velocity; 
+    public Vector3 velocity; 
     private bool isJumping = false;
     private bool isGrounded;
 
@@ -49,7 +49,7 @@ public class PlayerMovement : MonoBehaviour
         controller.Move(move * moveSpeed * Time.deltaTime);
 
         // check if the player jumps
-        if(isJumping)
+        if(isJumping && isGrounded)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * gravity * -2f);
             isJumping = false;
